@@ -1,14 +1,32 @@
 import kotlin.math.roundToInt
 
 fun main() {
-     val SecretNumber = (Math.random() * 10).roundToInt()
 
-    println("I'm thinking of a number between 0 and 10. Can you guess it? Try it")
-    val Guess = Integer.parseInt(readLine())
+    val SecretNumber = (Math.random() * 10).roundToInt()
+    println("Welcome to Catching the number")
 
-    if  (SecretNumber == Guess) {
-        println("You're Rigth, congrats")
-    } else {
-        println("You're Wrong, think again, the number is $SecretNumber")
+    var UserGuess: Int? = null
+    var IsValidInput = false
+
+    while (!IsValidInput) {
+        print("Enter your guess 0-10: ")
+        val userInput = readLine()
+
+        try {
+            UserGuess = userInput?.toInt()
+            if (UserGuess != null) {
+                IsValidInput = true
+            } else {
+                println("Try again with a real number")
+            }
+        } catch (e: NumberFormatException) {
+            println("ERROR! Invalid input, try again with a real number")
+        }
+    }
+
+    if (UserGuess == SecretNumber) {
+        println("Congrats, you're right!")
+    } else  {
+        println("I'm so sorry, you're wrong :(, the number was $SecretNumber")
     }
 }
