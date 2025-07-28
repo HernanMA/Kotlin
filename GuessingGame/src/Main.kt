@@ -1,3 +1,8 @@
+import functions.compareGuess
+import functions.getUserGuess
+import functions.isCorrectGuess
+import functions.playAgain
+
 fun main() {
     println("🎮 Welcome to Catching the Number")
 

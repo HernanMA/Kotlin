@@ -1,3 +1,5 @@
+package functions
+
 fun getUserGuess(): Int {
     var guess: Int? = null
     while (guess == null || guess !in 0..10) {
