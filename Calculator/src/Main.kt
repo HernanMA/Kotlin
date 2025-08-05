@@ -10,14 +10,14 @@ fun main() {
     val Num2 = GetNumbers("What's your second number?")
 
     try {
-        val Result = when (Operation) {
+        val result = when (Operation) {
             "+" -> sum(Num1, Num2)
             "-" -> subtract(Num1, Num2)
             "*" -> multiply(Num1, Num2)
             "/" -> divide(Num1, Num2)
             else -> throw IllegalArgumentException("Invalid operation")
         }
-        println("The result is $Result")
+        println("The result is $result")
     } catch (e: IllegalArgumentException) {
         println("ERROR: ${e.message}")
     }

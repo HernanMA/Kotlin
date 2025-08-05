@@ -4,7 +4,7 @@ fun getUserGuess(): Int {
     var guess: Int? = null
     while (guess == null || guess !in 0..10) {
         print("Enter your guess (0-10): ")
-        val input = readLine()
+        val input = readlnOrNull()
         try {
             val num = input?.toInt()
             if (num != null && num in 0..10) {
@@ -19,26 +19,22 @@ fun getUserGuess(): Int {
     return guess
 }
 
-fun isCorrectGuess(guess: Int, secret: Int): Boolean {
-    return guess == secret
+fun isCorrectGuess(guess: Int, secret: Int) = guess == secret
+
+fun compareGuess(guess: Int, secret: Int) = if (guess < secret) {
+    "Your guess is too low."
+} else {
+    "Your guess is too high."
 }
 
-fun compareGuess(guess: Int, secret: Int): String {
-    return if (guess < secret) {
-        "Your guess is too low."
-    } else {
-        "Your guess is too high."
-    }
-}
+tailrec fun playAgain(promp:String = "Do you want to play again? (y/n): "): Boolean {
 
-fun playAgain(): Boolean {
-    while (true) {
-        print("Do you want to play again? (y/n): ")
-        val input = readLine()?.lowercase()
-        when (input) {
-            "y" -> return true
-            "n" -> return false
-            else -> println("Please enter 'y' for yes or 'n' for no.")
-        }
+    print(promp)
+    val input = readlnOrNull()?.trim()?.lowercase()
+    return when (input) {
+        "y" ->  true
+        "n" ->  false
+    //    else -> println("Please enter 'y' for yes or 'n' for no.")
+        else -> playAgain("Please enter 'y' for yes or 'n' for no.")
     }
 }

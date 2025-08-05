@@ -1,11 +1,11 @@
 package Math
 
-fun GetNumbers(Message: String): Double {
+fun GetNumbers(message: String): Double {
     while (true) {
-        print(Message)
-        val Entry = readLine()
+        print(message)
+        val entry = readLine()
         try {
-            return Entry?.toDouble() ?: throw IllegalArgumentException("Entry not valid")
+            return entry?.toDouble() ?: throw IllegalArgumentException("Entry not valid")
         } catch (e: NumberFormatException) {
             println("ERROR, please enter a valid number")
         } catch (e: IllegalArgumentException) {
